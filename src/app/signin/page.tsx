@@ -13,24 +13,27 @@ export default function Signin() {
     const router = useRouter();
     return (
         <>
-            <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+            <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 overflow-hidden">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <div className="bgsticker-1 absolute inset-0 z-[-1] bg-no-repeat bg-cover">
-                        <Image
-                            src={backgroundSticker1}
-                            alt="Background Sticker"
-                            layout="fill"
-                            objectFit="cover"
-                        />
+                    <div className="relative flex items-center justify-center w-full h-full">
+                        <div className="bgsticker-1 absolute z-[-1] bg-no-repeat bg-cover">
+                            <Image
+                                src={backgroundSticker1}
+                                alt="Background Sticker"
+                                layout="fill"
+                                objectFit="cover"
+                            />
+                        </div>
+                        <div className="bgsticker-2 absolute z-[-2] bg-no-repeat bg-cover">
+                            <Image
+                                src={backgroundSticker2}
+                                alt="Background Sticker"
+                                layout="fill"
+                                objectFit="cover"
+                            />
+                        </div>
                     </div>
-                    <div className="bgsticker-2 absolute inset-0 z-[-1] bg-no-repeat bg-cover">
-                        <Image
-                            src={backgroundSticker2}
-                            alt="Background Sticker"
-                            layout="fill"
-                            objectFit="cover"
-                        />
-                    </div>
+
                     <div className="flex flex-col items-center justify-center gap-4 mb-4">
                         <Image
                             src={logoSvg}
@@ -50,7 +53,8 @@ export default function Signin() {
                         Sign In to Your Account
                     </h2>
                 </div>
-                <hr />
+                <hr className="w-4/5 lg:w-3/12" />
+
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     <div className="space-y-6">
                         <div>

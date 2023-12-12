@@ -103,7 +103,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="fixed bottom-0 left-0 right-0 mt-8 text-center text-white" style={{ color: '#6c4ee5', opacity:'0.7' }}>
+      <div className="fixed bottom-0 left-0 right-0 mt-8 text-center text-white" style={{ color: '#6c4ee5', opacity: '0.7' }}>
         <p className="mb-1">
           © Designed And Developed By <a href="https://www.instagram.com/_mire_patel_/" className="font-bold text-indigo-500" target="_blank" rel="noopener noreferrer">Mire Patel</a>
         </p>

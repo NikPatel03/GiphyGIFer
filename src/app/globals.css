@@ -8,55 +8,36 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
-
 body {
   color: rgb(var(--foreground-rgb));
-  /* background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)); */
-
-  /* background: linear-gradient(
-        to bottom,
-        rgb(108, 78, 229),
-        rgb(10, 197, 223))
-      ; */
-
   background: rgba(165, 152, 216, 0.166);
 }
 
-.bgsticker-1 {
-  position: absolute;
-  content: "";
-  left: 28%;
-  top: 10px;
-  width: 500px;
-  height: 500px;
-  opacity: 0.2;
-  z-index: -1;
-}
-
+.bgsticker-1,
 .bgsticker-2 {
   position: absolute;
   content: "";
-  left: 41%;
-  top: 200px;
-  width: 500px;
-  height: 500px;
+  width: 700px;
+  height: 700px;
   opacity: 0.2;
+}
+
+.bgsticker-1 {
+  z-index: -1;
+  left: -70%;
+  top: -138px;
+}
+
+.bgsticker-2 {
   z-index: -2;
+  left: -17%;
+  top: 14px;
 }
 
 hr {
-    border: 0;
-    height: 1px;
-    width: 20%;
-    margin: 40px auto 10px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(108, 78, 229), rgba(0, 0, 0, 0));
+  border: 0;
+  height: 1px;
+  width: 20%;
+  margin: 40px auto 10px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(108, 78, 229), rgba(0, 0, 0, 0));
 }
