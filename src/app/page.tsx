@@ -90,8 +90,10 @@ export default function Home() {
 
         <GifSearch addToFavorites={addToFavorites} removeFromFavorites={removeFromFavorites} />
 
-        <div className="mt-8">
-          <h2 className="text-white text-2xl font-bold mb-4">Favorites</h2>
+        <hr style={{ width: '90%', margin: '50px auto 50px' }} />
+
+        <div className="mt-12 flex flex-col items-center justify-center">
+          <h2 className="text-white text-2xl font-bold mb-12">Favorites</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {favorites.map((fav) => (
               <div key={fav.id} className="relative aspect-w-1 aspect-h-1 p-4 rounded-md overflow-hidden bg-slate-900/50 backdrop-blur-md flex items-center">
