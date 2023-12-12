@@ -53,10 +53,20 @@ const GifSearch: React.FC<any> = ({ addToFavorites, removeFromFavorites }) => {
                         placeholder="Search for GIFs..."
                         className="block w-full rounded-md border-0 bg-white/5 py-1.5 px-2.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                     />
+                    {/* Only icon for mobile devices */}
                     <button
                         onClick={() => searchGifs()}
                         disabled={!searchTerm || loading}
-                        className="ml-2 bg-indigo-500 text-white rounded-md py-1.5 px-3 disabled:opacity-40 flex items-center"
+                        className="ml-2 bg-indigo-500 text-white rounded-md py-1.5 px-3 disabled:opacity-40 flex items-center lg:hidden"
+                    >
+                        <FontAwesomeIcon icon={faSearch} />
+                    </button>
+
+                    {/* Icon + button name for larger devices */}
+                    <button
+                        onClick={() => searchGifs()}
+                        disabled={!searchTerm || loading}
+                        className="ml-2 bg-indigo-500 text-white rounded-md py-1.5 px-3 disabled:opacity-40 flex items-center hidden lg:flex"
                     >
                         <FontAwesomeIcon icon={faSearch} className="mr-2" />
                         Search

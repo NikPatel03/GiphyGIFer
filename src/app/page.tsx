@@ -6,6 +6,8 @@ import { useState } from 'react';
 import profileImg from '../../public/Profile.png';
 import Image from 'next/image';
 import logoSvg from '../../public/logo.svg';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface Gif {
   id: string;
@@ -38,7 +40,7 @@ export default function Home() {
   return (
     <div className="p-8 min-h-screen">
       <div>
-        <div className="flex flex-col items-center justify-center gap-4 mb-6">
+        <div className="flex items-center justify-center gap-4 mb-16 lg:mb-12">
           <Image
             src={logoSvg}
             alt="Logo"
@@ -61,12 +63,22 @@ export default function Home() {
                 objectFit="cover"
               />
             </div>
-            <div className="text-white">{session?.data?.user?.email}</div>
+            <div className="text-white hidden lg:flex items-center">{session?.data?.user?.email}</div>
           </div>
+          {/* Only icon for mobile devices */}
           <button
             onClick={() => signOut()}
-            className="text-white bg-indigo-500 rounded-md py-1.5 px-3 focus:outline-none"
+            className="text-white bg-indigo-500 rounded-md py-1.5 px-3 focus:outline-none lg:hidden"
           >
+            <FontAwesomeIcon icon={faSignOutAlt} />
+          </button>
+
+          {/* Icon + button name for larger devices */}
+          <button
+            onClick={() => signOut()}
+            className="text-white bg-indigo-500 rounded-md py-1.5 px-3 hidden lg:flex items-center"
+          >
+            <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" />
             Logout
           </button>
         </div>
