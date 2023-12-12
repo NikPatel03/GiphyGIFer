@@ -30,12 +30,16 @@ export default function Home() {
   const [favorites, setFavorites] = useState<Gif[]>([]);
 
   const addToFavorites = (gif: Gif) => {
-    setFavorites((prevFavorites) => [...prevFavorites, gif]);
+    // Check if the gif is already in favorites by id
+    if (!favorites.some((fav) => fav.id === gif.id)) {
+      setFavorites((prevFavorites) => [...prevFavorites, gif]);
+    }
   };
 
   const removeFromFavorites = (gifId: string) => {
     setFavorites((prevFavorites) => prevFavorites.filter((fav) => fav.id !== gifId));
   };
+
 
   return (
     <div className="p-8 min-h-screen">
@@ -44,8 +48,8 @@ export default function Home() {
           <Image
             src={logoSvg}
             alt="Logo"
-            width={60} // Adjust width based on your design
-            height={40} // Adjust height based on your design
+            width={60}
+            height={40}
             layout="fixed"
           />
           <h2 className="text-center text-white text-3xl font-bold">GiphyGIFer</h2>
@@ -90,15 +94,22 @@ export default function Home() {
           <h2 className="text-white text-2xl font-bold mb-4">Favorites</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {favorites.map((fav) => (
-              <div key={fav.id} className="relative">
-                <img src={fav.images.fixed_height.url} alt={fav.title} className="cursor-pointer rounded-md overflow-hidden bg-white/20 backdrop-blur-md p-4 mx-auto object-cover" />
+              <div key={fav.id} className="relative aspect-w-1 aspect-h-1 p-4 rounded-md overflow-hidden bg-slate-900/50 backdrop-blur-md flex items-center">
+                <div className="aspect-w-1 aspect-h-1 mx-auto object-cover">
+                  <img
+                    src={fav.images.fixed_height.url}
+                    alt={fav.title}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
                 <button
                   onClick={() => removeFromFavorites(fav.id)}
                   className="absolute top-2 right-2 bg-white/5 text-white rounded-full p-1 focus:outline-none"
                 >
-                  ❤️
+                  ❌
                 </button>
               </div>
+
             ))}
           </div>
         </div>

@@ -23,7 +23,7 @@ const GifSearch: React.FC<any> = ({ addToFavorites, removeFromFavorites }) => {
             const response = await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${apiKey}&limit=${gifsPerPage}&offset=${(currentPage - 1) * gifsPerPage}`);
             const data = await response.json();
             setGifs(data.data);
-            setShowPagination(true); // Show pagination after searching
+            setShowPagination(true);
         } catch (error) {
             console.error('Error fetching GIFs:', error);
         } finally {
@@ -115,21 +115,27 @@ const GifSearch: React.FC<any> = ({ addToFavorites, removeFromFavorites }) => {
                 </div>
             )}
 
-            {gifs.length > 0 && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {gifs.map((gif: any) => (
-                        <div key={gif.id} className="relative">
-                            <img src={gif.images.fixed_height.url} alt={gif.title} className="cursor-pointer rounded-md overflow-hidden bg-white/20 backdrop-blur-md p-4 mx-auto object-cover" />
-                            <button
-                                onClick={() => addToFavorites(gif)}
-                                className="absolute top-2 right-2 bg-white/5 text-white rounded-full p-1 focus:outline-none"
-                            >
-                                ❤️
-                            </button>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {gifs.map((gif: any) => (
+                    <div key={gif.id} className="relative aspect-w-1 aspect-h-1 p-4 rounded-md overflow-hidden bg-slate-900/50 backdrop-blur-md flex items-center">
+                        <div className="aspect-w-1 aspect-h-1 mx-auto object-cover">
+                            <img
+                                src={gif.images.fixed_height.url}
+                                alt={gif.title}
+                                className="object-cover w-full h-full"
+                            />
                         </div>
-                    ))}
-                </div>
-            )}
+                        <button
+                            onClick={() => addToFavorites(gif)}
+                            className="absolute top-2 right-2 bg-white/5 text-white rounded-full p-1 focus:outline-none"
+                        >
+                            ❤️
+                        </button>
+                    </div>
+
+
+                ))}
+            </div>
 
 
             {gifs.length > 0 && (
