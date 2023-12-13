@@ -41,3 +41,21 @@ hr {
   margin: 40px auto 10px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(108, 78, 229), rgba(0, 0, 0, 0));
 }
+
+@keyframes clickScaleAnim {
+  0% {
+    transform: scale(2.4);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+.click-scale-anim:active {
+  animation: clickScaleAnim 0.3s ease-in-out;
+}
