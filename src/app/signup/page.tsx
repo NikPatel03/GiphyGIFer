@@ -27,7 +27,23 @@ export default function Signup() {
             })
             .catch((error) => {
                 console.error('Signup error:', error);
-                alert('Signup error. Please try again.');
+
+                if (error.code === 'auth/email-already-in-use') {
+                    // User is already registered, show a confirmation popup
+                    const shouldSignIn = window.confirm('User is already registered with this email. Do you want to sign in instead?');
+
+                    if (shouldSignIn) {
+                        router.push('/signin');
+                    } else {
+                        alert('Please register with a different email.');
+                    }
+                } else if (error.code === 'auth/weak-password') {
+                    // Handle weak password error
+                    alert('Password is too weak. Please use a stronger password.');
+                } else {
+                    // Other errors
+                    alert('Signup error. Please try again.');
+                }
             });
     };
 

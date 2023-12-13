@@ -11,6 +11,34 @@ export default function Signin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
+
+    const handleSignIn = async () => {
+        try {
+            const result = await signIn('credentials', { email, password, redirect: false });
+
+            if (result && !result.error) {
+                // If the sign-in is successful, redirect to the desired page
+                router.push('/');
+            } else if (result && result.error) {
+                // If there is an error, show an alert based on the error message
+                if (result.error === 'CredentialsSignin' && result.status === 401) {
+                    const signUpConfirmation = window.confirm('Invalid email or password. Do you want to sign up?');
+
+                    if (signUpConfirmation) {
+                        router.push('/signup');
+                    } else {
+                        alert('Please enter a valid details.');
+                    }
+                } else {
+                    console.error('Sign-in error:', result.error);
+                    alert('Sign-in error. Please try again.');
+                }
+            }
+        } catch (error) {
+            console.error('Sign-in error:', error);
+            alert('Sign-in error. Please try again.');
+        }
+    };
     return (
         <>
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 overflow-hidden">
@@ -100,7 +128,7 @@ export default function Signin() {
 
                         <div>
                             <button
-                                onClick={() => signIn('credentials', { email, password, redirect: true, callbackUrl: '/' })}
+                                onClick={handleSignIn}
                                 disabled={!email || !password}
                                 className="disabled:opacity-40 flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                             >
